@@ -29,7 +29,8 @@ export function SignIn() {
           if (!response.ok) {
             alert("Email or password is wrong")
           } else {
-            alert("Logged in successfully!")
+            const { username } = await response.json() as { username: string }
+            alert(`Logged in successfully! Welcome back ${username}!`)
           }
         } catch (error) {
           console.error('Error sign up:', error);

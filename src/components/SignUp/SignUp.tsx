@@ -2,21 +2,27 @@ import { useState } from "react"
 import { useRoute, ROUTES } from "../RouteProvider"
 import { API_URL } from "../../constans"
 import { Form } from "../Form"
+import { validateSignUpForm } from "./validations"
 
 export function SignUp() {
     const { setRoute } = useRoute()
 
-    const [disabled, setDisabled] = useState(false)
-    const [username, setUsername] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [passwordConfirmation, setPasswordConfirmation] = useState("")
+    const [disabled, setDisabled] = useState<boolean>(false)
+    const [username, setUsername] = useState<string>("")
+    const [email, setEmail] = useState<string>("")
+    const [password, setPassword] = useState<string>("")
+    const [passwordConfirmation, setPasswordConfirmation] = useState<string>("")
 
     const [errors, setErrors] = useState<{
       [key: string]: string[]
     }>({})
 
     const onCreate = async () => {
+        const errors = validateSignUpForm({ username, email, password, passwordConfirmation })
+        if (Object.keys(errors).length !== 0) {
+          setErrors(errors)
+          return;
+        }
         setDisabled(true)
         try {
           const response = await fetch(`${API_URL}/signup`, {
@@ -73,6 +79,9 @@ export function SignUp() {
             />
             <Form.Error errors={errors["email"]} />
             <Form.Label>Password</Form.Label>
+            <p className="opacity-50">
+              Minimum is 6 characters. It should contain a letter, a number and a special character.
+            </p>
             <Form.Input
                 type="password"
                 onChange={(e) => setPassword(e.target.value)}
