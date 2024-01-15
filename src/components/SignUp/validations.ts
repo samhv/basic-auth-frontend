@@ -25,18 +25,18 @@ const validatePassword = (password: string) => {
     const errors: string[] = []
     if (!password) {
         errors.push("Can't be blank.")
-    }
-    if (password.length < 8) {
+    } else if (password.length < 8) {
         errors.push("Password must be at least 8 characters long.")
-    }
-    if (!PASSWORD_HAS_LETTER.test(password)) {
-        errors.push("Password must contain a letter.")
-    }
-    if (!PASSWORD_HAS_NUMBER.test(password)) {
-        errors.push("Password must contain a number.")
-    }
-    if (!PASSWORD_HAS_SPECIAL_CHARACTER.test(password)) {
-        errors.push("Password must contain a special character.")
+    } else {
+        if (!PASSWORD_HAS_LETTER.test(password)) {
+            errors.push("Password must contain a letter.")
+        }
+        if (!PASSWORD_HAS_NUMBER.test(password)) {
+            errors.push("Password must contain a number.")
+        }
+        if (!PASSWORD_HAS_SPECIAL_CHARACTER.test(password)) {
+            errors.push("Password must contain a special character.")
+        }
     }
     return errors
 }
@@ -45,8 +45,7 @@ const validatePasswordConfirmation = (password: string, passwordConfirmation: st
     const errors: string[] = []
     if (!passwordConfirmation) {
         errors.push("Can't be blank.")
-    }
-    if (password !== passwordConfirmation) {
+    } else if (password !== passwordConfirmation) {
         errors.push("It doesn't match the password.")
     }
     return errors
