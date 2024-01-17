@@ -3,6 +3,11 @@ const PASSWORD_HAS_LETTER = /[a-zA-Z]/;
 const PASSWORD_HAS_NUMBER = /\d/;
 const PASSWORD_HAS_SPECIAL_CHARACTER = /[^a-zA-Z0-9]/; 
 
+/**
+ * Validates an email address.
+ * @param email - The email address to be validated.
+ * @returns An array of error messages. Empty if the email is valid.
+ */
 const validateEmail = (email: string): string[] => {
     const errors: string[] = []
     if (!email) {
@@ -13,6 +18,11 @@ const validateEmail = (email: string): string[] => {
     return errors
 }
 
+/**
+ * Validates a username.
+ * @param username - The username to be validated.
+ * @returns An array of error messages. Empty if the username is valid.
+ */
 const validateUsername = (username: string): string[] => {
     const errors: string[] = []
     if (!username) {
@@ -21,6 +31,11 @@ const validateUsername = (username: string): string[] => {
     return errors
 }
 
+/**
+ * Validates a password.
+ * @param password - The password to be validated.
+ * @returns An array of error messages. Empty if the password meets criteria.
+ */
 const validatePassword = (password: string): string[] => {
     const errors: string[] = []
     if (!password) {
@@ -41,6 +56,12 @@ const validatePassword = (password: string): string[] => {
     return errors
 }
 
+/**
+ * Validates that the password confirmation matches the password.
+ * @param password - The original password.
+ * @param passwordConfirmation - The password confirmation to be checked.
+ * @returns An array of error messages. Empty if the confirmation matches.
+ */
 const validatePasswordConfirmation = (password: string, passwordConfirmation: string): string[] => {
     const errors: string[] = []
     if (!passwordConfirmation) {
@@ -51,6 +72,11 @@ const validatePasswordConfirmation = (password: string, passwordConfirmation: st
     return errors
 }
 
+/**
+ * Validates a sign-up form's fields.
+ * @param param0 - Object containing username, email, password, and password confirmation.
+ * @returns An object with keys as field names and values as arrays of error messages.
+ */
 export const validateSignUpForm = ({
     username,
     email,
