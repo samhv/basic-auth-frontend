@@ -1,4 +1,4 @@
-# Simple sign up
+# Simple auth
 
 Simple auth app that allows to sign up and sign in.
 
