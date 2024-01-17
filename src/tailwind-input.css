@@ -6,3 +6,7 @@
 :root {
   font-family: Montserrat, sans-serif;
 }
+
+ul {
+  @apply ml-4 lg:ml-5 list-disc;
+}

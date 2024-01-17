@@ -38,7 +38,7 @@ export function SignIn() {
         setDisabled(false)
     }
 
-    return <div className="w-full">
+    return <div className="w-full md:w-min">
         <div className="flex flex-col items-center">
             <h1 className="text-3xl lg:text-4xl mt-5">Sign in</h1>
         </div>

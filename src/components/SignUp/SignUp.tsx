@@ -54,7 +54,7 @@ export function SignUp() {
         setDisabled(false)
     }
     
-    return <div className="w-full">
+    return <div className="w-full md:w-min">
         <div className="flex flex-col items-center">
           <h1 className="text-3xl lg:text-4xl mt-5">Sign up</h1>
         </div>
@@ -96,7 +96,7 @@ export function SignUp() {
                 value={passwordConfirmation}
                 placeholder=""
             />
-            <Form.Error errors={errors["password_confirmation"]} />
+            <Form.Error errors={errors["passwordConfirmation"]} />
             <div className="flex flex-col items-center">
                 <button disabled={disabled} type="submit" className="mt-5 border-2 border-black hover:opacity-70 active:opacity-80 transition px-4 py-2 rounded-md transition duration-100 ease-in-out">
                     Create

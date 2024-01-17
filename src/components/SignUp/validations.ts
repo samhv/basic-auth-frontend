@@ -3,7 +3,7 @@ const PASSWORD_HAS_LETTER = /[a-zA-Z]/;
 const PASSWORD_HAS_NUMBER = /\d/;
 const PASSWORD_HAS_SPECIAL_CHARACTER = /[^a-zA-Z0-9]/; 
 
-const validateEmail = (email: string) => {
+const validateEmail = (email: string): string[] => {
     const errors: string[] = []
     if (!email) {
         errors.push("Can't be blank.")
@@ -13,7 +13,7 @@ const validateEmail = (email: string) => {
     return errors
 }
 
-const validateUsername = (username: string) => {
+const validateUsername = (username: string): string[] => {
     const errors: string[] = []
     if (!username) {
         errors.push("Can't be blank.")
@@ -21,7 +21,7 @@ const validateUsername = (username: string) => {
     return errors
 }
 
-const validatePassword = (password: string) => {
+const validatePassword = (password: string): string[] => {
     const errors: string[] = []
     if (!password) {
         errors.push("Can't be blank.")
@@ -41,7 +41,7 @@ const validatePassword = (password: string) => {
     return errors
 }
 
-const validatePasswordConfirmation = (password: string, passwordConfirmation: string) => {
+const validatePasswordConfirmation = (password: string, passwordConfirmation: string): string[] => {
     const errors: string[] = []
     if (!passwordConfirmation) {
         errors.push("Can't be blank.")
@@ -61,22 +61,22 @@ export const validateSignUpForm = ({
     email: string,
     password: string,
     passwordConfirmation: string,
-}) => {
+}): { [key: string]: string[] } => {
     const errors: { [key: string]: string[] } = {}
     const emailErrors = validateEmail(email)
-    if (emailErrors) {
+    if (emailErrors.length > 0) {
         errors.email = emailErrors
     }
     const usernameErrors = validateUsername(username)
-    if (usernameErrors) {
+    if (usernameErrors.length > 0) {
         errors.username = usernameErrors
     }
     const passwordErrors = validatePassword(password)
-    if (passwordErrors) {
+    if (passwordErrors.length > 0) {
         errors.password = passwordErrors
     }
     const passwordConfirmationErrors = validatePasswordConfirmation(password, passwordConfirmation)
-    if (passwordConfirmationErrors) {
+    if (passwordConfirmationErrors.length > 0) {
         errors.passwordConfirmation = passwordConfirmationErrors
     }
     return errors
